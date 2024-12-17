@@ -16,44 +16,46 @@ private:
     unsigned int num_elems = 0;
 
 public:
-    List() {
+    List() { //como la lista esat vacia no hay ni primer ni ultimo elemento
         first = nullptr;
         last = nullptr;
         num_elems = 0;
     }
 
     ~List() {
-        while (first != nullptr) {
+        while (first != nullptr) { //si hay elementos en la lista (si hay un numero en la primera pos)
             Node* temp = first;
-            first = first->next;
+            first = first->next; //no entiendo
             delete temp;
         }
     }
 
     void push_back(const int& value) {
-        Node* newNode = new Node(value);
-        if (last == nullptr) {
-            first = last = newNode;
+        Node* newNode = new Node(value);  /*se crea un nuevo nodo con el valor ingresado en el main,  
+        next y prev se inicializan a nullptr en el constructor.*/
+        if (last == nullptr) { //si el ultimo elemento esta vacio,
+            first = last = newNode; //se establece como unico elemento el que ha ingresado
         }
-        else {
-            last->next = newNode;
+        else { //si la lista no esta vacia
+            last->next = newNode; // no entiendo
             newNode->prev = last;
             last = newNode;
         }
-        num_elems++;
+        num_elems++; //se suma un elemento a al lista
     }
 
     void push_front(const int& value) {
-        Node* newNode = new Node(value);
-        if (first == nullptr) {
-            first = last = newNode;
+        Node* newNode = new Node(value); /*se crea un nuevo nodo con el valor ingresado en el main,  
+        next y prev se inicializan a nullptr en el constructor.*/
+        if (first == nullptr) {//si el primer elemento esta vacio,
+            first = last = newNode;//se establece como unico elemento el que ha ingresado
         }
-        else {
+        else {//si la lista no esta vacia
             newNode->next = first;
             first->prev = newNode;
             first = newNode;
         }
-        num_elems++;
+        num_elems++; //se suma un elemento a al lista
     }
 
     void insert(unsigned int position, const int& value) {
@@ -63,7 +65,7 @@ public:
         else if (position >= num_elems) {
             push_back(value);
         }
-        else {
+        else { //no entiendo
             Node* current = first;
             unsigned int index = 0;
             while (index < position) {
@@ -82,12 +84,12 @@ public:
     }
 
     void erase(unsigned int position) {
-        if (position >= num_elems || first == nullptr) {
+        if (position >= num_elems || first == nullptr) { //si la psoicion que quiere no es posible muestra el mensaje
             cerr << "Invalid position or list is empty." << endl;
             return;
         }
 
-        Node* current = first;
+        Node* current = first; // qu eno entiendoe l current 
 
         
         if (position == 0) {
